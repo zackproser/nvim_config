@@ -17,6 +17,14 @@ return {
     --   function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
     --   desc = "Previous buffer",
     -- },
+    --
+    -- tmux navigation commands 
+    --
+    -- Configure the mappings we want for tmux navigator functions
+    ["<c-h>"] = {"<cmd>TmuxNavigateLeft<cr>"},
+    ["<c-j>"] = {"<cmd>TmuxNavigateDown<cr>"},
+    ["<c-k>"] = {"<cmd>TmuxNavigateUp<cr>"},
+    ["<c-l>"] = {"<cmd>TmuxNavigateRight<cr>"},
 
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {
