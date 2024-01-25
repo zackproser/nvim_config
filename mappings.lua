@@ -20,11 +20,11 @@ return {
     --
     -- tmux navigation commands 
     --
-    -- Configure the mappings we want for tmux navigator functions
     ["<c-h>"] = {"<cmd>TmuxNavigateLeft<cr>"},
     ["<c-j>"] = {"<cmd>TmuxNavigateDown<cr>"},
-    ["<c-k>"] = {"<cmd>TmuxNavigateUp<cr>"},
+    ["<c-k>"] = {"<cmd>>TmuxNavigateUp<cr>"},
     ["<c-l>"] = {"<cmd>TmuxNavigateRight<cr>"},
+    ["<c-\\>"] = {"<cmd>TmuxNavigatePrevious<cr>"},
 
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {

@@ -9,26 +9,28 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
-  -- Override the core plugin smart-splits: 
-    { "mrjones2014/smart-splits.nvim", enabled = false },
-    --
-    { 'morhetz/gruvbox', lazy = false },
+  -- Install Codeium AI-enhanced code completion
     {
-      "christoomey/vim-tmux-navigator",
-      lazy = false,
-      cmd = {
-        "TmuxNavigateLeft",
-        "TmuxNavigateDown",
-        "TmuxNavigateUp",
-        "TmuxNavigateRight",
-        "TmuxNavigatePrevious",
-      },
-      keys = {
-        { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-        { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-        { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-        { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-        { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-      },
-    }
-  }
+      'Exafunction/codeium.vim',
+      event = 'BufEnter', 
+     config = function ()
+        vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+        vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+        vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+        vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      end
+    },
+    -- Gruvbox color scheme
+    { 'morhetz/gruvbox', lazy = false },
+    -- Tmux Navigator -- 
+    {
+  "christoomey/vim-tmux-navigator",
+  cmd = {
+    "TmuxNavigateLeft",
+    "TmuxNavigateDown",
+    "TmuxNavigateUp",
+    "TmuxNavigateRight",
+    "TmuxNavigatePrevious",
+  },
+ }
+}
